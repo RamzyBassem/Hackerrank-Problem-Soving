@@ -22,7 +22,7 @@ Output : minSwaps = 5
 
 Algorithm : 
 Note that the array should consist of consecutive integers which will make the solution different from if this condition wasn't given.
-loop on the loop with iterator i:
+loop on the array with iterator i:
   if arr[i] ! = i+1           // The value at arr[i] is in the wrong position so we will need to place it in its correct position.
     swap(arr[i] , arr[ arr[i] - 1 ])       // in the above example 7 is placed in the wrong position so we want to swap with the value in arr[6] 
     increment minSwaps         // increment the value of the minSwap
@@ -49,7 +49,6 @@ Java code :
             }
         }
         return  swaps;
-
     }
     
     O(n+n) = O(n) where n is the length of the array
