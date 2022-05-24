@@ -32,7 +32,6 @@ loop on the array with iterator i:
           
 return minSwaps          
 
-https://github.com/RamzyBassem/Hackerrank-Problem-Soving.git
 Java code :
 
     static int minimumSwaps(int[] arr) {
