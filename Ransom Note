@@ -1,0 +1,45 @@
+HackerRank ransom note
+Difficulty : Easy
+Problem Statment : Harold is a kidnapper who wrote a ransom note, but now he is worried it will be traced back to him through his handwriting. He found a magazine and wants to know if he can cut out whole words from it and use them to create an untraceable replica of his ransom note. The words in his note are case-sensitive and he must use only whole words available in the magazine. He cannot use substrings or concatenation to create the words he needs.
+
+Given the words in the magazine and the words in the ransom note, print Yes if he can replicate his ransom note exactly using whole words from the magazine; otherwise, print No.
+
+Example :
+Magazine = "attack at dawn"    Note : "attack at dawn"
+The magazine has all the right words, but there is a case mismatch. The answer is "NO".
+
+The used algorithm is to traverse the magazine and add strings to a hashmap with the string as a key and number of occurence as the value.
+After we have built the hashmap we traverse the Note. For each string in the note if the hashmap contains it then we will use this word from the hashmap so 
+decrement the value by 1 or delete the entry if it had the value of 1 before using it.
+whenever we find a string that doesn;t exist in the map we return "NO" 
+after finishing traversing the Note list, if we didn't return yet this means that we found all the strings in the magazine hashmap so return "YES"
+
+JAVA CODE :
+public static void checkMagazine(List<String> magazine, List<String> note) {
+        if(magazine.size()<note.size()){
+            System.out.println("No");
+            return;   
+        } 
+        HashMap<String,Integer> map= new HashMap<>();
+        for(int i =0;i<magazine.size();i++){
+            map.put(magazine.get(i), map.getOrDefault(magazine.get(i), 0)+1);   
+        }
+        for(int i =0;i<note.size();i++){
+            String x = note.get(i);
+            if(!map.containsKey(x)){
+                System.out.println("No");
+                return;  
+            }
+            else{
+                if(map.get(x)==1){
+                    map.remove(x);
+                }
+                else
+                map.put(x, map.get(x)-1);
+            }
+        }
+        System.out.println("Yes");
+    }
+}
+Time complixity : O(N+M)
+Space complixity : O(M)
